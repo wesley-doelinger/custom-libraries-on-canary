@@ -534,7 +534,7 @@ Successfully installed psycopg2-2.9.1
 We can confirm the installation by checking the content of `deps/` dir using
 the command `tree deps` to see its content (some lines suppressed):
 
-```shell
+```
 deps/
 |-- psycopg2
 |   |-- __init__.py
