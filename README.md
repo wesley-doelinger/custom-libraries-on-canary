@@ -771,7 +771,7 @@ psycopg2 imported successfully
 
 Nice! It works!
 
-Not so fast... There is a second gotcha here.
+Not so fast... There is a third gotcha here.
 
 Let's add the aws stuff, pack everything on a zip file, create a canary and see
 what happens:
@@ -965,6 +965,8 @@ So, since our development environment tries mimic the platform where the code
 will run, at least with a compatible kernel version, all we need is to copy
 all these libraries locally and load them before our actual python code start
 to import the modules we need.
+
+And finally, the fourth gotcha...
 
 One important thing to note is that when a library has dependencies, the loader
 will try to load them recursively, looking for the dependencies on the default
