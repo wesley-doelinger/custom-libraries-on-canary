@@ -1,0 +1,16 @@
+FROM amazonlinux
+
+## Initial update
+RUN yum update -y
+
+## Installing helper tools
+RUN yum install -y wget curl vim less tree
+
+## Installing Python 3.8 and dev packages
+RUN true \
+    && amazon-linux-extras enable python3.8 \
+    && yum install -y python38
+
+WORKDIR /app
+
+CMD [ "bash" ]

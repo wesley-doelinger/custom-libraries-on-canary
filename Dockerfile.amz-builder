@@ -1,0 +1,32 @@
+FROM amazonlinux
+
+## Initial update
+RUN yum update -y
+
+## Installing dev tools
+RUN yum groupinstall -y 'Development Tools'
+
+## Installing helper tools
+RUN yum install -y \
+    yum-utils \
+    wget curl \
+    vim less tree
+
+## Installing lddtree
+RUN true \
+    && wget https://download-ib01.fedoraproject.org/pub/epel/7/x86_64/Packages/p/pax-utils-1.2.3-1.el7.x86_64.rpm \
+    && yum install -y pax-utils-1.2.3-1.el7.x86_64.rpm
+
+## Installing Python 3.8 and dev packages
+RUN true \
+    && amazon-linux-extras enable python3.8 \
+    && yum install -y \
+        python38 python38-devel
+
+## Installing stuff to work with postgres
+RUN yum install -y \
+    postgresql-libs postgresql-devel
+
+WORKDIR /app
+
+CMD [ "bash" ]

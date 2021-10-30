@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  my-pg:
+    image: postgres:9.6.23-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+
+  amz-builder:
+    image: amz-builder
+    volumes:
+      - "./:/app/src/"
+    command: bash
+    tty: true
+    stdin_open: true
+
+  amz-runner:
+    image: amz-runner
+    volumes:
+      - "./:/app/src/"
+    command: bash
+    tty: true
+    stdin_open: true
